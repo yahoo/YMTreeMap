@@ -1,0 +1,18 @@
+use_frameworks!
+
+target 'YMTreeMap-iOS' do
+  platform :ios, '10.0'
+  pod 'YMTreeMap', :path => '../'
+
+  target 'YMTreeMap_Tests' do
+    inherit! :search_paths
+
+    #pod 'Quick', '~> 1.0.0'
+    #pod 'Nimble', '~> 5.1.1'
+  end
+end
+
+target 'YMTreeMap-macOS' do
+  platform :osx, '10.12'
+  pod 'YMTreeMap', :path => '../'
+end
