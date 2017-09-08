@@ -112,9 +112,13 @@ pod 'YMTreeMap'
 Various papers on treemapping layout algorithms and usability that helped influence this project. A copy of each paper is in the Research folder.
 
 [Squarified Treemaps](https://www.win.tue.nl/~vanwijk/stm.pdf) - Mark Bruls, Kees Huizing, Jarke J. van Wijk
+
 [Ordered Treemap Layouts](http://hcil2.cs.umd.edu/trs/2001-06/2001-06.html) - Ben Shneiderman, Martin Wattenberg
+
 [Treemaps for space-constrained visualization of hierarchies](http://www.cs.umd.edu/hcil/treemap-history/index.shtml) - Ben Shneiderman
+
 [Treemapping on Wikipedia](https://en.wikipedia.org/wiki/Treemapping)
+
 [Animated Exploration of Dynamic Graphs with Radial Layout](http://bailando.sims.berkeley.edu/papers/infovis01.htm) - Ka-Ping Yee, Danyel Fisher, Rachna Dhamija, Marti Hearst
 
 ## Author
