@@ -115,6 +115,8 @@ Various papers on treemapping layout algorithms and usability that helped influe
 
 [Ordered Treemap Layouts](http://hcil2.cs.umd.edu/trs/2001-06/2001-06.html) - Ben Shneiderman, Martin Wattenberg
 
+[Ordered and Quantum Treemaps: Making Effective Use of 2D Space to Display Hierarchies](ftp://ftp.cs.umd.edu/pub/hcil/Reports-Abstracts-Bibliography/2001-18html/2001-18.htm) - Benjamin B. Bederson, Ben Shneiderman, Martin Wattenberg
+
 [Treemaps for space-constrained visualization of hierarchies](http://www.cs.umd.edu/hcil/treemap-history/index.shtml) - Ben Shneiderman
 
 [Treemapping on Wikipedia](https://en.wikipedia.org/wiki/Treemapping)
