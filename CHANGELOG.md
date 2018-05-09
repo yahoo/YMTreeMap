@@ -1,5 +1,9 @@
 # CHANGELOG
 
+1.1.0 (2018-05-09)
+--------------------
+- Support for Swift 4 and Objective-C clients (@blanksblanks)
+
 1.0.0 (2017-08-30)
 --------------------
 - Initial public release of library (@adamkaplan)

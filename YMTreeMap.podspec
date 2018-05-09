@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YMTreeMap'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'A simple tree map generator for iOS and macOS.'
   s.description      = <<-DESC
 YMTreeMap is a high performance treemap layout engine for iOS and macOS, written in Swift.
