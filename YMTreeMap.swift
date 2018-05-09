@@ -83,9 +83,9 @@ import Foundation
     @objc public var alignment = FrameAlignment.RetinaSubPixel
     
     /// The tree map values provided during initialization
-    public let values: [Double]
+    @objc public let values: [Double]
     
-    lazy var allWeights: [Double] = {
+    @objc lazy var allWeights: [Double] = {
         // Compute the total of all of the values
         let total = self.values.reduce(0) { $0 + $1 }
 
@@ -101,7 +101,7 @@ import Foundation
     /// always contain the same number of items as the `values` list provided here.
     ///
     /// - Parameter values: A list of positive double values
-    public init(withValues values: [Double]) {
+    @objc public init(withValues values: [Double]) {
         // Negative numbers are not supported or recoverable.
         values.forEach { (value) in
             if value < 0 {
