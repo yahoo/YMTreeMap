@@ -22,7 +22,7 @@ class Layout: UICollectionViewLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var index = 0
-        return rects.flatMap { (itemRect: CGRect) -> UICollectionViewLayoutAttributes? in
+        return rects.compactMap { (itemRect: CGRect) -> UICollectionViewLayoutAttributes? in
             let attrs = rect.intersects(itemRect) ? self.layoutAttributesForItem(at: IndexPath(item: index, section: 0)) : nil
             index += 1
             return attrs
