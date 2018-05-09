@@ -28,13 +28,14 @@ a rectangle to layout within.
                        DESC
 
   s.homepage         = 'https://github.com/yahoo/YMTreeMap'
-  s.screenshots      = 'https://github.com/yahoo/YMTreeMap/master/Example/Screenshots/random30.png'
+  s.screenshots      = 'https://raw.githubusercontent.com/yahoo/YMTreeMap/master/Example/Screenshots/random30.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Adam Kaplan' => 'adamkaplan@oath.com' }
   s.source           = { :git => 'https://github.com/yahoo/YMTreeMap.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
   s.macos.deployment_target = '10.10'
+  s.swift_version = '4.0'
 
   s.source_files = 'YMTreeMap.swift'
 end
