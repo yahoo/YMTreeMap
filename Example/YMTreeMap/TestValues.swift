@@ -5,6 +5,6 @@ import Foundation
 
 protocol TestValues {
     static var AllValues: [Double] { get }
-    
+
     static var description: String { get }
 }

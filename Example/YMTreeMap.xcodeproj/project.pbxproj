@@ -21,8 +21,8 @@
 		FC0410FA1F562BC500748888 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0410F91F562BC500748888 /* Assets.xcassets */; };
 		FC0410FD1F562BC500748888 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0410FB1F562BC500748888 /* MainMenu.xib */; };
 		FC6744EE1F592B5400306912 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744ED1F592B5400306912 /* CollectionViewCell.swift */; };
-		FCA07DDB1F55C900007C5E3C /* TestValues_OneThousand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED03371F55C45B003F81BA /* TestValues_OneThousand.swift */; };
-		FCA07DDD1F55C968007C5E3C /* TestValues_Dow30.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA07DDC1F55C968007C5E3C /* TestValues_Dow30.swift */; };
+		FCA07DDB1F55C900007C5E3C /* TestValuesOneThousand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED03371F55C45B003F81BA /* TestValuesOneThousand.swift */; };
+		FCA07DDD1F55C968007C5E3C /* TestValuesDow30.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA07DDC1F55C968007C5E3C /* TestValuesDow30.swift */; };
 		FCA07DDF1F55CB13007C5E3C /* TestValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA07DDE1F55CB13007C5E3C /* TestValues.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,9 +71,9 @@
 		FC0411031F57121A00748888 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
 		FC0411041F57127500748888 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		FC6744ED1F592B5400306912 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		FCA07DDC1F55C968007C5E3C /* TestValues_Dow30.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValues_Dow30.swift; sourceTree = "<group>"; };
+		FCA07DDC1F55C968007C5E3C /* TestValuesDow30.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValuesDow30.swift; sourceTree = "<group>"; };
 		FCA07DDE1F55CB13007C5E3C /* TestValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValues.swift; sourceTree = "<group>"; };
-		FCED03371F55C45B003F81BA /* TestValues_OneThousand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValues_OneThousand.swift; sourceTree = "<group>"; };
+		FCED03371F55C45B003F81BA /* TestValuesOneThousand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValuesOneThousand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +134,8 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				FC6744ED1F592B5400306912 /* CollectionViewCell.swift */,
 				FCA07DDE1F55CB13007C5E3C /* TestValues.swift */,
-				FCED03371F55C45B003F81BA /* TestValues_OneThousand.swift */,
-				FCA07DDC1F55C968007C5E3C /* TestValues_Dow30.swift */,
+				FCED03371F55C45B003F81BA /* TestValuesOneThousand.swift */,
+				FCA07DDC1F55C968007C5E3C /* TestValuesDow30.swift */,
 				FC0410D61F56084300748888 /* ObjCBenchmark.h */,
 				FC0410D71F56084300748888 /* ObjCBenchmark.m */,
 				FC0410D51F56084200748888 /* YMTreeMap-Bridging-Header.h */,
@@ -481,11 +481,11 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				FC0410D81F56084300748888 /* ObjCBenchmark.m in Sources */,
-				FCA07DDD1F55C968007C5E3C /* TestValues_Dow30.swift in Sources */,
+				FCA07DDD1F55C968007C5E3C /* TestValuesDow30.swift in Sources */,
 				FC6744EE1F592B5400306912 /* CollectionViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				FCA07DDF1F55CB13007C5E3C /* TestValues.swift in Sources */,
-				FCA07DDB1F55C900007C5E3C /* TestValues_OneThousand.swift in Sources */,
+				FCA07DDB1F55C900007C5E3C /* TestValuesOneThousand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,7 +746,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "YMTreeMap-macOS/YMTreeMap.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "YMTreeMap-macOS/Supporting Files/YMTreeMap.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -780,7 +780,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "YMTreeMap-macOS/YMTreeMap.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "YMTreeMap-macOS/Supporting Files/YMTreeMap.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
