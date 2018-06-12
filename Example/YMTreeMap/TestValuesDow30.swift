@@ -5,9 +5,9 @@ import Foundation
 import UIKit
 
 /// 30 values to test with. These are the market caps of the Dow Jones 30 index.
-public struct TestValues_Dow30: TestValues {
+public struct TestValuesDow30: TestValues {
     public static let description: String = "Dow30"
-    
+
     public static let AllValues: [Double] = [
         847097757696,
         575896485888,
@@ -40,12 +40,12 @@ public struct TestValues_Dow30: TestValues {
         69433417728,
         33439258624
     ]
-    
+
     public struct Company {
         public let symbol: String
         public let percentChange: Double
     }
-    
+
     public static let Companies: [Company] = [
         Company(symbol: "AAPL", percentChange: 0.39791483),
         Company(symbol: "MSFT", percentChange: 1.0268809),
@@ -78,14 +78,14 @@ public struct TestValues_Dow30: TestValues {
         Company(symbol: "CAT",  percentChange: -0.051046524000000003),
         Company(symbol: "TRV",  percentChange: -0.51719666)
     ]
-    
+
     static func color(_ r: Int, _ g: Int, _ b: Int) -> UIColor {
         return UIColor(red: CGFloat(Double(r) / 255.0),
                        green: CGFloat(Double(g) / 255.0),
                        blue: CGFloat(Double(b) / 255.0),
                        alpha: 1)
     }
-    
+
     /// Static color ranges. In reality, you would compute dynamic ranges.
     public static let colors: [(Double, UIColor)] = [
         (-1.6234137,color(0xec, 0x00, 0x08)),

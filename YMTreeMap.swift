@@ -4,7 +4,7 @@
 import Foundation
 
 @objc public class YMTreeMap: NSObject {
-    
+
     /// A platform independent rectangle in cartesian coordinates. This is needed
     /// in order to support both macOS (NSRect) and iOS (CGRect).
     internal struct Rect {
@@ -12,79 +12,76 @@ import Foundation
         var y: Double
         var width: Double
         var height: Double
-        
+
         mutating func align(using alignment: FrameAlignment) {
-            if alignment == .HighPrecision {
+            if alignment == .highPrecision {
                 return
             }
-            
+
             let maxX = x + width
             let maxY = y + height
-            
+
             x = Rect.alignPoint(x, using: alignment)
             y = Rect.alignPoint(y, using: alignment)
-            
-            width = Rect.alignPoint(maxX, using: alignment) - x;
-            height = Rect.alignPoint(maxY, using: alignment) - y;
+
+            width = Rect.alignPoint(maxX, using: alignment) - x
+            height = Rect.alignPoint(maxY, using: alignment) - y
         }
-        
+
         static func alignPoint(_ point: Double, using alignment: FrameAlignment) -> Double {
-            if alignment == .HighPrecision {
+            if alignment == .highPrecision {
                 return point
             }
-            
+
             let (integral, fractional) = modf(point)
-            let subPixel = alignment == .RetinaSubPixel
-            
-            if (subPixel && fractional < 0.25) {
-                return integral;
-            }
-            else if (fractional < 0.5) {
-                return integral + 0.5;
-            }
-            else if (subPixel && fractional < 0.75) {
-                return integral + 0.5;
-            }
-            else {
-                return integral + 1.0;
+            let subPixel = alignment == .retinaSubPixel
+
+            if subPixel && fractional < 0.25 {
+                return integral
+            } else if fractional < 0.5 {
+                return integral + 0.5
+            } else if subPixel && fractional < 0.75 {
+                return integral + 0.5
+            } else {
+                return integral + 1.0
             }
         }
     }
-    
+
     enum LayoutDirection {
         // Prefer to layout along the horizontal axis first, then fall back to
         // vertical once the space is exhaused.
-        case Horizontal
+        case horizontal
         // Prefer to layout along the vertical axis first, then fall back to
         // horizontal once the space is exhaused.
-        case Vertical
+        case vertical
     }
-    
+
     enum TreeMapError: Error {
-        case Invalid
+        case invalid
     }
-    
+
     @objc public enum FrameAlignment: Int {
         /// High precision frames that accurately represent the relative weight
         /// of each item. This option is the fastest and most precise, but may
         /// result in blurry edges due to sub-pixel rendering.
-        case HighPrecision
+        case highPrecision
         /// Frame origin and size values are rounded to the nearest 0.5. The
         /// relative weights are adjusted slightly to ensure that frames fall on
         /// typical pixel boundaries for Retina screens. Default.
-        case RetinaSubPixel
+        case retinaSubPixel
         /// Frame origin and size values are rounded to the nearest integral number.
         /// The relative weights are adjusted as needed to ensure that frames fall
         /// on pixel boundaries. This is suitable for non-retina screens.
-        case Integral
+        case integral
     }
-    
+
     /// Set the alignment to apply to all generated TreeMap.Rects.
-    @objc public var alignment = FrameAlignment.RetinaSubPixel
-    
+    @objc public var alignment = FrameAlignment.retinaSubPixel
+
     /// The tree map values provided during initialization
     @objc public let values: [Double]
-    
+
     @objc lazy var allWeights: [Double] = {
         // Compute the total of all of the values
         let total = self.values.reduce(0) { $0 + $1 }
@@ -92,7 +89,7 @@ import Foundation
         // Map the values into their relative weight (percentage of total)
         return self.values.map { $0 / total }
     }()
-    
+
     /// Initialize this tree map with a set of values as the basis for the areas
     /// of the tree map shapes. The numbers are arbitrary weights for items. The
     /// order of these values is preserved throughout all operations and return
@@ -111,10 +108,10 @@ import Foundation
                 exception.raise()
             }
         }
-        
+
         self.values = values
     }
-    
+
     /// Convienance integer initializer for Swift clients. Since the values are
     /// summed and turned into relative floating point weights, calling this
     /// initializer is equivalent to casting all of the values to Double and
@@ -124,43 +121,43 @@ import Foundation
     @nonobjc public convenience init(withValues values: [Int]) {
         self.init(withValues: values.map { Double($0) })
     }
-    
+
     func tessellate(weights: [Double], inRect rect: Rect) -> [Rect] {
         // Convert weights into double array of pre-multipled area (as in length x width)
         // for faster access
         let rectArea = rect.width * rect.height
         var areas: [Double] = weights.map { $0 * rectArea }
-        
+
         // Loop through each element and tessellate until all components used
         var rects = [Rect]()
         var canvas = rect
-        
+
         while areas.count > 0 {
             var remainingCanvas: Rect  = canvas
-            
+
             let newRects = self.tessellate(areas: areas, inRect: canvas, remaining: &remainingCanvas)
-            
+
             // Add the new Rects to the list of all Rects, update the canvas
             // and remove the items from area that were used.
             rects.append(contentsOf: newRects)
             canvas = remainingCanvas
             areas.removeFirst(newRects.count)
         }
-        
+
         return rects
     }
-    
+
     func tessellate(areas: [Double], inRect rect: Rect, remaining: inout Rect) -> [Rect] {
         var direction: LayoutDirection // axis to fill along
         var length: Double // length of the constrained edge
         if rect.width >= rect.height {
-            direction = .Horizontal
+            direction = .horizontal
             length = rect.height
         } else {
-            direction = .Vertical
+            direction = .vertical
             length = rect.width
         }
-        
+
         // Try adding elements, testing aspect ratio each time. As long as the
         // aspect ratio decreases (nearer to 1:1), accept the element, otherwise
         // reject the new element.
@@ -179,7 +176,7 @@ import Foundation
             // new element into the row and test another element. Otherwise, this
             // row is complete & locked.
             if worstAspectRatio > aspectRatio {
-                break;
+                break
             } else {
                 // Worst case aspect ratio has improved, so this is now the new
                 // current aspect ratio!
@@ -188,43 +185,43 @@ import Foundation
                 aspectRatio = worstAspectRatio
             }
         }
-        
+
         // Compute the Rects for the used element weights
         let computedWidth: Double = groupWeightAccumulator / length
-        var lengthOffset = direction == .Horizontal ? rect.y : rect.x
+        var lengthOffset = direction == .horizontal ? rect.y : rect.x
         let rects = acceptedAreas.map { (area: Double) -> Rect in
             let height = area / computedWidth
             let thisOffset = lengthOffset
             lengthOffset += height
-            
+
             var layoutRect: Rect
             switch direction {
-            case .Horizontal:
+            case .horizontal:
                 layoutRect = Rect(x: rect.x, y: thisOffset, width: computedWidth, height: height)
-            case .Vertical:
+            case .vertical:
                 layoutRect = Rect(x: thisOffset, y: rect.y, width: height, height: computedWidth)
             }
             layoutRect.align(using: self.alignment)
             return layoutRect
         }
-        
+
         // Compute the remaining rectangle for the the caller to pass to the next run
         switch direction {
-        case .Horizontal:
+        case .horizontal:
             remaining = Rect(x: rect.x + computedWidth,
                              y: rect.y,
                              width: rect.width - computedWidth,
                              height: rect.height)
-        case .Vertical:
+        case .vertical:
             remaining = Rect(x: rect.x,
                              y: rect.y + computedWidth,
                              width: rect.width,
                              height: rect.height - computedWidth)
         }
-        
+
         return rects
     }
-    
+
     /// Compute the worst aspect ratio for the given array of weights. Each weight
     /// is converted into an area with one side of the specified length. The weight
     /// that produces the largest aspect ratio is chosed, and that aspect ratio
@@ -256,7 +253,7 @@ import Foundation
         // a single weighted meta-element. For this, we'll need to know the
         // weight of the new grouping.
         let computedGroupWeight = groupWeight + proposedWeight
-        
+
         // Compute the length of the edge perpendicular to the edge that we're
         // laying out along for this group. Since we know the total area of the
         // group, and the length of one of it's edges - provided as an argument
@@ -270,12 +267,12 @@ import Foundation
         //   |________:
         //       L'
         let width = computedGroupWeight / length
-        
+
         // Using the uniform "width" of the rectangle(s) in this area, compute
         // the lengths to get the aspect ratios. We want to find the WORST
         // aspect ratio in the group and test against that.
         var worstAspect = aspectRatio(width, proposedWeight / width)
-        
+
         for weight in weights {
             let thisAspect = aspectRatio(width, weight / width)
             worstAspect = max(thisAspect, worstAspect)
@@ -283,25 +280,25 @@ import Foundation
                 break
             }
         }
-        
+
         return worstAspect
     }
-    
+
     func aspectRatio(_ edge1: Double, _ edge2: Double) -> Double {
         return edge1 > edge2 ? edge1 / edge2 : edge2 / edge1
     }
 }
 
-//MARK: Platform Extensions for NSRect/CGRect
+// MARK: Platform Extensions for NSRect/CGRect
 
 public extension YMTreeMap {
-    
+
     #if os(iOS) || os(tvOS) || os(watchOS)
     public typealias SystemRect = CGRect
     #elseif os(OSX)
     public typealias SystemRect = NSRect
     #endif
-    
+
     @objc public func tessellate(inRect rect: YMTreeMap.SystemRect) -> [YMTreeMap.SystemRect] {
         let rects = self.tessellate(weights: self.allWeights, inRect: rect.toYMTreeMapRect)
         return rects.map { $0.toSystemRect }

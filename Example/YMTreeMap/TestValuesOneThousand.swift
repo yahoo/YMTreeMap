@@ -4,9 +4,9 @@
 import Foundation
 
 /// 1,000 values to test with. These are randomly generated and add up to 1.0.
-public struct TestValues_OneThousand: TestValues {
+public struct TestValuesOneThousand: TestValues {
     public static let description: String = "Random 1000"
-    
+
     public static let AllValues: [Double] = [
         0.0019982263911515474000000,
         0.0019977595657110214000000,

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+1.2.0 (2018-6-11)
+--------------------
+- Code style cleanup with SwiftLint
+
 1.1.0 (2018-05-09)
 --------------------
 - Support for Swift 4 and Objective-C clients (@blanksblanks)

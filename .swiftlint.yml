@@ -1,0 +1,15 @@
+disabled_rules:
+    - function_body_length
+    - type_body_length
+    - file_length
+    - comma
+included:
+  - YMTreeMap.swift
+  - Example
+identifier_name:
+  excluded: # excluded via string array
+    - x
+    - y
+    - r
+    - g
+    - b
