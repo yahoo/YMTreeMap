@@ -2,6 +2,7 @@
 //  Copyright 2017 Yahoo Holdings Inc.
 
 import Foundation
+import CoreGraphics
 
 @objc public class YMTreeMap: NSObject {
 
