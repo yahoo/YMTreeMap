@@ -2,6 +2,7 @@
 //  Copyright 2017 Yahoo Holdings Inc.
 
 import Foundation
+import CoreGraphics
 
 @objc public class YMTreeMap: NSObject {
 
@@ -291,7 +292,7 @@ import Foundation
 
 // MARK: Platform Extensions for NSRect/CGRect
 
-public extension YMTreeMap {
+extension YMTreeMap {
 
     #if os(iOS) || os(tvOS) || os(watchOS)
     public typealias SystemRect = CGRect
@@ -305,13 +306,13 @@ public extension YMTreeMap {
     }
 }
 
-internal extension YMTreeMap.Rect {
+extension YMTreeMap.Rect {
     internal var toSystemRect: YMTreeMap.SystemRect {
         return YMTreeMap.SystemRect(x: x, y: y, width: width, height: height)
     }
 }
 
-internal extension YMTreeMap.SystemRect {
+extension YMTreeMap.SystemRect {
     internal var toYMTreeMapRect: YMTreeMap.Rect {
         return YMTreeMap.Rect(x: Double(minX),
                               y: Double(minY),

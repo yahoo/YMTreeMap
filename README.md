@@ -12,6 +12,7 @@ The output rectangles can easily be used to render the shapes using whatever ren
  - Using CoreGraphics (in drawRect, etc)
  - Using OpenGL
  - Using a custom UICollectionView layout
+ - Using a SwiftUI view
 
 ## Usage
 
@@ -100,11 +101,15 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-YMTreeMap is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+YMTreeMap is available through [CocoaPods](http://cocoapods.org) and [Swift Package Manager](https://www.swift.org/package-manager/).
+To install it, simply add the following line to your Podfile or Package.swift file:
 
 ```ruby
 pod 'YMTreeMap'
+```
+
+```swift
+.package(name: "YMTreeMap", url: "https://github.com/yahoo/YMTreeMap.git",
 ```
 
 ## Further Reading

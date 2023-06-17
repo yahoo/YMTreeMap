@@ -35,7 +35,7 @@ a rectangle to layout within.
 
   s.ios.deployment_target = '9.0'
   s.macos.deployment_target = '10.10'
-  s.swift_version = '4.0'
+  s.swift_versions = ['4.0']
 
   s.source_files = 'YMTreeMap.swift'
 end
